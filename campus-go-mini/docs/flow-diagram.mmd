@@ -1,0 +1,17 @@
+flowchart TD
+    A([Buka tautan HTTPS]) --> B[Layar awal]
+    B -->|Mulai AR| C{WebXR AR<br/>didukung?}
+    B -->|Mode Simulasi| S[Kamera biasa +<br/>tombol Maju/Mundur]
+    C -->|Tidak| S
+    C -->|Ya| D[Izin kamera]
+    D -->|Ditolak| E[Pesan jelas:<br/>izinkan kamera] --> B
+    D -->|Diizinkan| F[Mencari lantai<br/>cincin hijau]
+    F -->|Ketuk layar| G[Makhluk muncul<br/>dari creatures.json]
+    S --> G
+    G --> H[HUD: nama + jarak]
+    H --> I{Ketuk makhluk /<br/>tombol Tangkap}
+    I --> J{Jarak ≤ radius?}
+    J -->|Tidak| K[Gagal: suara + getar<br/>Terlalu jauh] --> H
+    J -->|Ya| L[Animasi Catch + suara + getar]
+    L --> M[(Inventori<br/>localStorage)]
+    M --> N[Makhluk hilang,<br/>respawn setelah cooldown] --> H

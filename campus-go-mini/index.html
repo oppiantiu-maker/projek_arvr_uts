@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#1e9e4f">
+  <title>Campus Go Mini</title>
+  <link rel="icon" type="image/png" href="assets/img/icon-192.png">
+  <link rel="apple-touch-icon" href="assets/img/icon-192.png">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Satu versi Three.js untuk seluruh repository (sesuai modul: 0.175.0) -->
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.175.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.175.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <!-- Latar kamera untuk Mode Simulasi (di mode AR, kamera ditangani WebXR) -->
+  <video id="camera-feed" playsinline muted autoplay></video>
+
+  <!-- Semua UI ada di dalam #overlay agar ikut tampil saat sesi AR (WebXR DOM Overlay) -->
+  <div id="overlay">
+
+    <!-- Layar awal -->
+    <section id="screen-start" class="screen">
+      <img src="assets/img/icon-192.png" alt="" class="logo">
+      <h1>Campus Go Mini</h1>
+      <p class="tagline">Temukan dan tangkap makhluk kampus!</p>
+      <button id="btn-start-ar" class="btn btn-primary" disabled>Memeriksa AR…</button>
+      <button id="btn-start-sim" class="btn btn-secondary">Mode Simulasi</button>
+      <button id="btn-open-inv-start" class="btn btn-ghost">🎒 Lihat Inventori (<span class="inv-count">0</span>)</button>
+      <p id="support-note" class="note"></p>
+    </section>
+
+    <!-- Layar memuat -->
+    <section id="screen-loading" class="screen hidden">
+      <div class="spinner"></div>
+      <p id="loading-text">Memuat…</p>
+    </section>
+
+    <!-- Layar error -->
+    <section id="screen-error" class="screen hidden">
+      <h2>Ups!</h2>
+      <p id="error-text"></p>
+      <button id="btn-error-back" class="btn btn-secondary">Kembali</button>
+    </section>
+
+    <!-- HUD permainan -->
+    <div id="hud" class="hidden">
+      <div class="hud-top">
+        <button id="btn-inventory" class="pill">Inventori (<span class="inv-count">0</span>) 🎒</button>
+        <div id="target-pill" class="pill target">
+          <span id="target-name">Mencari…</span>
+          <span id="target-dist"></span>
+        </div>
+        <button id="btn-exit" class="pill icon" aria-label="Keluar">✕</button>
+      </div>
+
+      <p id="hint" class="hint"></p>
+
+      <div id="sim-controls" class="hidden">
+        <button id="btn-backward" class="pill">▼ Mundur</button>
+        <button id="btn-forward" class="pill">▲ Maju</button>
+      </div>
+
+      <button id="btn-catch" class="btn-catch" disabled>Tangkap!</button>
+    </div>
+
+    <!-- Notifikasi singkat -->
+    <div id="toast" class="toast hidden"></div>
+
+    <!-- Panel inventori -->
+    <section id="panel-inventory" class="panel hidden" aria-label="Inventori">
+      <header>
+        <h2>Inventori</h2>
+        <button id="btn-close-inv" class="pill icon" aria-label="Tutup">✕</button>
+      </header>
+      <p id="inv-summary" class="note"></p>
+      <ul id="inv-list"></ul>
+      <p id="inv-empty" class="note">Belum ada makhluk yang tertangkap. Ayo mulai berburu!</p>
+      <button id="btn-reset-inv" class="btn btn-ghost danger">Hapus semua</button>
+    </section>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

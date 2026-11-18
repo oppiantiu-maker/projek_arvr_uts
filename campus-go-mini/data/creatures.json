@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "catchRadius": 2.0,
+  "distanceScale": 1.0,
+  "spawnJitter": 0.5,
+  "creatures": [
+    {
+      "id": "robot",
+      "name": "Robot Kampus",
+      "description": "Robot penjaga lab yang suka mendengarkan musik lewat headphone.",
+      "model": "assets/models/robot.glb",
+      "thumbnail": "assets/img/robot.png",
+      "idleClip": "Idle",
+      "catchClip": "Catch",
+      "scale": 1.0,
+      "rarity": "common",
+      "spawn": { "x": 0, "z": -8 },
+      "spawnChance": 1.0,
+      "respawnSeconds": 15
+    },
+    {
+      "id": "buku",
+      "name": "Buku Terbang",
+      "description": "Buku perpustakaan yang kabur dan terbang mengepakkan sampulnya.",
+      "model": "assets/models/buku.glb",
+      "thumbnail": "assets/img/buku.png",
+      "idleClip": "Idle",
+      "catchClip": "Catch",
+      "scale": 1.0,
+      "rarity": "rare",
+      "spawn": { "x": 3, "z": -5 },
+      "spawnChance": 0.5,
+      "respawnSeconds": 25
+    }
+  ]
+}
