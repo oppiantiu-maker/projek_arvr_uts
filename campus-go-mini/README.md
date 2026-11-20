@@ -22,7 +22,7 @@ Campus Go Mini adalah permainan AR berbasis web untuk menangkap makhluk orisinal
 | Inventori tersimpan (localStorage) dan bisa dilihat | ✅ wajib |
 | Respawn dengan cooldown (`respawnSeconds`) | ✅ pilihan |
 | Makhluk langka (`rarity`, `spawnChance`) | ✅ pilihan |
-| Mode Simulasi untuk iPhone/laptop (seret, cubit, ketuk) | ✅ tambahan |
+| Mode Simulasi untuk iPhone/laptop (giroskop + deteksi langkah, ketuk) | ✅ tambahan |
 | Penanganan izin kamera ditolak dan perangkat tanpa AR | ✅ |
 
 ## Cara bermain
@@ -33,7 +33,7 @@ Campus Go Mini adalah permainan AR berbasis web untuk menangkap makhluk orisinal
 4. Berjalanlah mendekat. Tombol **Tangkap!** berubah hijau saat jarak ≤ 2 m.
 5. Ketuk tombol atau ketuk makhluknya. Hasil tangkapan masuk ke **Inventori**.
 
-**Mode Simulasi** (iPhone, laptop, atau HP tanpa WebXR): seret layar untuk melihat sekeliling, cubit untuk zoom, tahan **▲ Maju** untuk berjalan.
+**Mode Simulasi** (iPhone, laptop, atau HP tanpa WebXR): makhluk diam di tempat seperti Pokémon GO. Putar HP untuk menoleh (giroskop) dan berjalanlah sungguhan untuk mendekat (langkah dideteksi akselerometer, ±0,7 m per langkah); makin dekat, makhluk makin besar. Di laptop tanpa sensor: seret untuk menoleh, ↑/↓ untuk berjalan (khusus uji).
 
 Parameter uji: tambahkan `?skala=0.3` di akhir URL agar semua jarak spawn dikali 0,3 (untuk uji di ruangan sempit).
 
@@ -68,7 +68,7 @@ campus-go-mini/
 │   ├── main.js             titik awal, menyambungkan semua modul
 │   ├── data.js             memuat + memvalidasi creatures.json
 │   ├── ar.js               sesi WebXR: hit-test lantai, posisi HP, ketukan
-│   ├── sim.js              Mode Simulasi (kamera biasa, seret/cubit/Maju)
+│   ├── sim.js              Mode Simulasi (kamera biasa, giroskop + deteksi langkah)
 │   ├── spawn.js            memuat GLB, memunculkan makhluk, animasi, respawn
 │   ├── catch.js            aturan jarak dan radius (fungsi murni, teruji)
 │   ├── inventory.js        inventori di localStorage
